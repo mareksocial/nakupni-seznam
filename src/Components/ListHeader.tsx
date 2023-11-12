@@ -79,19 +79,19 @@ const ListHeader: React.FC<ListHeaderProps> = ({
             </div>
             <div className='mb-4'>
                 <button
-                    className={`px-4 bg-white rounded-md py-1 mr-2 ${currentFilter === 'all' ? 'bg-blue-600 rounded-md text-white' : 'bg-gray-200'}`}
+                    className={`px-4 bg-white rounded-md py-1 mr-2 ${currentFilter === 'all' ? 'bg-blue-600 rounded-md text-black' : 'bg-white'}`}
                     onClick={() => setFilter('all')}
                 >
                     All
                 </button>
                 <button
-                    className={`px-4 bg-white rounded-md py-1 mr-2 ${currentFilter === 'completed' ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}
+                    className={`px-4 bg-white rounded-md py-1 mr-2 ${currentFilter === 'completed' ? 'bg-blue-600 text-black' : 'bg-white'}`}
                     onClick={() => setFilter('completed')}
                 >
                     Solved
                 </button>
                 <button
-                    className={`px-4 rounded-md bg-white py-1 mr-2 ${currentFilter === 'uncompleted' ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}
+                    className={`px-4 rounded-md bg-white py-1 mr-2 ${currentFilter === 'uncompleted' ? 'bg-grey-200 text-black' : 'bg-white'}`}
                     onClick={() => setFilter('uncompleted')}
                 >
                     Unsolved

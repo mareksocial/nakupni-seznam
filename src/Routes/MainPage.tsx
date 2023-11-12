@@ -15,14 +15,14 @@ const HomePage: React.FC = () => {
         <div className='flex flex-col items-center justify-center mt-4'>
             <h1 className='text-4xl font-bold mb-4'>Shopping Lists </h1>
 
-            <Link to='/listDetail/1' className='text-xl text-blue-500 hover:text-blue-700 transition-colors'>
-                Example List
+            <Link to='/lists' className='bg-blue-600 rounded p-2 text-white mt-4 mb-6'>
+                My shopping lists
             </Link>
 
             <button className='bg-emerald-700 rounded p-2 text-white mt-4' onClick={loginAsOwner}>
                 Login - Owner
             </button>
-            <button className='bg-blue-600 rounded p-2 text-white mt-4' onClick={loginAsMember}>
+            <button className='bg-stone-600 rounded p-2 text-white mt-4' onClick={loginAsMember}>
                 Login - Member
             </button>
         </div>
