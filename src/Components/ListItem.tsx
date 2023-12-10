@@ -1,4 +1,5 @@
 import { Item } from '../Types/List'
+import { useTranslation } from 'react-i18next'
 
 interface ListItemProps {
     item: Item
@@ -8,6 +9,7 @@ interface ListItemProps {
 
 const ListItem: React.FC<ListItemProps> = ({ item, handleCheckboxChange, onRemove }) => {
     const { isCompleted, name, id } = item
+    const { t } = useTranslation()
 
     return (
         <div className='flex items-center justify-between bg-gray-100 p-3 rounded-md mb-2'>
@@ -21,7 +23,7 @@ const ListItem: React.FC<ListItemProps> = ({ item, handleCheckboxChange, onRemov
                 <span className={`ml-2 select-none ${isCompleted ? 'line-through text-gray-400' : 'text-gray-700'}`}>{name}</span>
             </div>
             <button className='bg-red-600 px-3 rounded-full text-white hover:bg-red-400 transition-colors' onClick={() => onRemove(id)}>
-                Remove
+                {t('remove')}
             </button>
         </div>
     )

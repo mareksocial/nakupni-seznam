@@ -4,7 +4,7 @@ import Layout from './Components/Layout'
 import { UserProvider } from './Providers/UserProvider'
 import MainPage from './Routes/MainPage'
 import Lists from './Routes/Lists'
-import { ListProvider } from './Providers/ListProvider'  
+import { ListProvider } from './Providers/ListProvider'
 
 function App() {
     return (
@@ -23,6 +23,7 @@ function App() {
             </ListProvider>
         </UserProvider>
     )
+
 }
 
 export default App

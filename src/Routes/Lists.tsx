@@ -4,15 +4,17 @@ import { useLists } from '../Providers/ListProvider'
 import { Link } from 'react-router-dom'
 import DeleteShoppingList from '../Components/Modals/DeleteShoppingList'
 import { useUser } from '../Providers/UserProvider'
+import { useTranslation } from 'react-i18next'
 
 const Lists: React.FC = () => {
     const listProvider = useLists()
     const user = useUser()
+    const { t } = useTranslation()
 
     const [isCreateListModalOpen, setIsCreateListModalOpen] = useState(false)
     const [isDeleteShoppingListId, setIsDeleteShoppingListId] = useState('')
 
-    if (!user || !user.user || !user.user.id) return <div>To view lists you must be signed in</div>
+    if (!user || !user.user || !user.user.id) return <div>{t("see_list_sign_in")}</div>
 
     let listData = listProvider.getListsByUserId(user.user.id)
 
@@ -57,14 +59,14 @@ const Lists: React.FC = () => {
                 onDelete={onDeleteList}
             />
 
-            <h1 className='text-2xl font-bold text-gray-800 mb-4 mt-4 text-center'>My shopping lists</h1>
+            <h1 className='text-2xl font-bold text-gray-800 mb-4 mt-4 text-center'>{t("my_lists")}</h1>
             <div className='flex flex-col items-center'>
                 <div className='flex justify-end mb-4'>
                     <button
                         className='bg-green-700 hover:bg-green-500 text-white font-bold py-2 px-4 rounded'
                         onClick={() => setIsCreateListModalOpen(true)}
                     >
-                        Create New List
+                        {t("create_list")}
                     </button>
                 </div>
 
@@ -83,7 +85,7 @@ const Lists: React.FC = () => {
                                 className='ml-auto bg-red-600 px-3 rounded-full text-white hover:bg-red-400 transition duration-300 ease-in-out'
                                 onClick={() => setIsDeleteShoppingListId(list.id)}
                             >
-                                Remove
+                                {t("remove")}
                             </button>
                         )}
                     </div>

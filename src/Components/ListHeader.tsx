@@ -3,6 +3,8 @@ import { useUser } from '../Providers/UserProvider'
 import ListUsersModal from './Modals/ListUsersModal'
 import { User } from '../Types/User'
 import EditIcon from '@mui/icons-material/Edit'
+import { useTranslation } from 'react-i18next'
+
 interface ListHeaderProps {
     listName: string
     listUsers: User[]
@@ -29,6 +31,7 @@ const ListHeader: React.FC<ListHeaderProps> = ({
     const addItemInputRef = useRef<HTMLInputElement>(null)
     const isUserOwner = listUsers.find((user) => user.id === userContext?.user?.id)?.isOwner || false
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const { t } = useTranslation()
 
     return (
         <div>
@@ -55,7 +58,7 @@ const ListHeader: React.FC<ListHeaderProps> = ({
                             onClick={() => setIsModalOpen(true)}
                             className='ml-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
                         >
-                            Manage Users
+                            {t('manage_users')}
                         </button>
                     )}
 
@@ -64,7 +67,7 @@ const ListHeader: React.FC<ListHeaderProps> = ({
                             onClick={() => onRemoveUser(userContext?.user?.id || '')}
                             className='ml-auto bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
                         >
-                            Leave
+                            {t('leave')}
                         </button>
                     )}
 
@@ -79,27 +82,27 @@ const ListHeader: React.FC<ListHeaderProps> = ({
             </div>
             <div className='mb-4'>
                 <button
-                    className={`px-4 bg-white rounded-md py-1 mr-2 ${currentFilter === 'all' ? 'bg-blue-600 rounded-md text-black' : 'bg-white'}`}
+                    className={`px-4 ${currentFilter === 'all' ? 'bg-blue-600 rounded-md text-white' : 'bg-stone-300'} rounded-md py-1 mr-2`}
                     onClick={() => setFilter('all')}
                 >
-                    All
+                    {t('all_items')}
                 </button>
                 <button
-                    className={`px-4 bg-white rounded-md py-1 mr-2 ${currentFilter === 'completed' ? 'bg-blue-600 text-black' : 'bg-white'}`}
+                    className={`px-4 ${currentFilter === 'completed' ? 'bg-blue-600 rounded-md text-white' : 'bg-stone-300'} rounded-md py-1 mr-2`}
                     onClick={() => setFilter('completed')}
                 >
-                    Solved
+                    {t('solved_items')}
                 </button>
                 <button
-                    className={`px-4 rounded-md bg-white py-1 mr-2 ${currentFilter === 'uncompleted' ? 'bg-grey-200 text-black' : 'bg-white'}`}
+                    className={`px-4 ${currentFilter === 'uncompleted' ? 'bg-blue-600 rounded-md text-white' : 'bg-stone-300'} rounded-md py-1 mr-2`}
                     onClick={() => setFilter('uncompleted')}
                 >
-                    Unsolved
+                    {t('unsolved_items')}
                 </button>
             </div>
 
             <div className='my-4'>
-                <input type='text' placeholder='Add new item' className='border p-2 mr-2' ref={addItemInputRef} />
+                <input type='text' placeholder={t("add_new_item")} className='border p-2 mr-2' ref={addItemInputRef} />
                 <button
                     className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'
                     onClick={() => {
@@ -107,7 +110,7 @@ const ListHeader: React.FC<ListHeaderProps> = ({
                         addItemInputRef.current!.value = ''
                     }}
                 >
-                    Add Item
+                    {t("add_item")}
                 </button>
             </div>
         </div>
